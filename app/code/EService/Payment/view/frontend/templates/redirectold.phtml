@@ -1,0 +1,17 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$checkoutSession = $objectManager->create('\Magento\Checkout\Model\Session');
+?>
+    <form action="<?php if($checkoutSession->getActionUrl()!=''){ echo $checkoutSession->getActionUrl();}?>" id="intelligentpayment_standard_checkout" method="get" name="intelligentpayment_standard_checkout">
+        <input type="hidden" name="token" value="<?php if($checkoutSession->getTokenValue()!=''){ echo $checkoutSession->getTokenValue();} ?>"/>
+        <input type="hidden" name="merchantId" value="<?php if($checkoutSession->getMerchantId()!=''){ echo $checkoutSession->getMerchantId();} ?>"/>
+        <input type="hidden" name="paymentSolutionId" value="500"/>
+        <input type="hidden" name="integrationMode" value="standalone">
+        <input type="submit" name="submitbtn" value="Click here if you are not redirected within 10 seconds..."/>
+    </form>
+
+	<script type="text/javascript">
+		
+          document.getElementById("intelligentpayment_standard_checkout").submit();
+       
+	</script>

@@ -1,0 +1,33 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <eservice_payment>
+                <active>0</active>
+                <model>EService\Payment\Model\PaymentMethod</model>
+                <title>eService</title>
+                <payment_action>sale</payment_action>
+                <order_status>pending</order_status>
+                <payment_cancelled>canceled</payment_cancelled>
+                <merchant_id></merchant_id>
+                <merchant_password></merchant_password>
+                <merchant_brandid></merchant_brandid>
+                <payment_methods>500</payment_methods>
+                <display_mode>hostedPayPage</display_mode>
+                <debug_log>0</debug_log>
+                <environment>production</environment>
+                <token_url_production>https://api.secure.eservice.com.pl/token</token_url_production>
+                <cashier_url_production>https://cashierui-api.secure.eservice.com.pl/ui/cashier</cashier_url_production>
+                <payments_url_production>https://api.secure.eservice.com.pl/payments</payments_url_production>
+                <js_url_production>https://cashierui-api.secure.eservice.com.pl/js/api.js</js_url_production>
+                <token_url_sandbox>https://apiuat.test.secure.eservice.com.pl/token</token_url_sandbox>
+                <cashier_url_sandbox>https://cashierui-apiuat.test.secure.eservice.com.pl/ui/cashier</cashier_url_sandbox>
+                <payments_url_sandbox>https://apiuat.test.secure.eservice.com.pl/payments</payments_url_sandbox>
+                <js_url_sandbox>https://cashierui-apiuat.test.secure.eservice.com.pl/js/api.js</js_url_sandbox>
+                <is_gateway>1</is_gateway>
+                <allowspecific>0</allowspecific>
+                <specific_countries></specific_countries>
+                <specific_currencies></specific_currencies>
+            </eservice_payment>
+        </payment>
+    </default>
+</config>

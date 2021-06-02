@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body>
+<form id="paymentForm" action="<?php echo $block->getMerchantLandingPageUrl(); ?>" method="post">
+<input type="hidden" id="merchantTxId" name="merchantTxId" value=""/>
+</form>
+<div id="ipgCashierDiv"></div>
+<script type="text/javascript" src="<?php echo $block->getJsUrl(); ?>"></script>
+<script type="text/javascript">
+    var cashier = com.myriadpayments.api.cashier();
+    cashier.init({ baseUrl: "<?php echo $block->escapeHtml($block->getFormUrl()) ?>" });
+    function handleResult(result,data) { 
+        if(result == "success"){
+
+            document.getElementById("merchantTxId").value = data.merchantTxId;;
+            document.getElementById("paymentForm").submit();
+        }
+    }
+     function pay() {
+         cashier.show({ containerId: "ipgCashierDiv",<?php
+            foreach ($block->getFormFields() as $field => $value) {
+                echo $field.':"'.$value.'",';
+         }
+         ?> successCallback: handleResult, failureCallback: handleResult, cancelCallback: handleResult,integrationMode:"iframe" });
+    };
+    pay();
+ </script>
+</body>
+</html>

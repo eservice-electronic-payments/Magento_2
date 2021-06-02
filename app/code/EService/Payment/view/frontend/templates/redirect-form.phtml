@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+
+
+    <form id="eservice_payment_form" method="<?php echo $block->escapeHtml($block->getFormMethod()) ?>" action="<?php echo $block->escapeHtml($block->getFormUrl()) ?>" name="eservice_payment_form">
+
+        <?php
+        foreach ($block->getFormFields() as $field => $value) {
+            echo '<input type="hidden" name="'.
+                $block->escapeHtml(htmlspecialchars($field, ENT_COMPAT | ENT_HTML401, 'UTF-8')).
+                '" value="'.$block->escapeHtml(htmlspecialchars($value, ENT_COMPAT | ENT_HTML401, 'UTF-8')).'" />';
+        }
+        ?>
+    </form>
+    <script type="text/javascript">
+         document.getElementById('eservice_payment_form').submit();
+    </script>
+
+</body>
+</html>
