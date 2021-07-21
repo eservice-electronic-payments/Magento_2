@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="eservice_payment_section" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>eService Gateway</label>
+                <comment>
+                    <![CDATA[]]>
+                </comment>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>payment/eservice_payment/active</config_path>
+                </field>
+                    <group id="eservice_payment_general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>General Settings</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Title</label>
+                            <config_path>payment/eservice_payment/title</config_path>
+                        </field>
+                        <field id="merchant_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Merchant ID</label>
+                            <config_path>payment/eservice_payment/merchant_id</config_path>
+                        </field>
+                        <field id="merchant_password" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Merchant API Password</label>
+                            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                            <config_path>payment/eservice_payment/merchant_password</config_path>
+                        </field>
+                        <field id="merchant_brandid" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Merchant Brand Id</label>
+                            <config_path>payment/eservice_payment/merchant_brandid</config_path>
+                        </field>
+                    </group>
+                    <group id="eservice_payment_advanced" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <comment>
+                            <![CDATA[Advanced configuration]]>
+                        </comment>
+                        <label>Advanced Settings</label>
+                        <attribute type="expanded">0</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="payment_action" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Payment Action</label>
+                            <source_model>EService\Payment\Model\Config\Source\NewOrderPaymentActions</source_model>
+                            <config_path>payment/eservice_payment/payment_action</config_path>
+                        </field>
+                        <field id="payment_methods" translate="label" type="text" sortOrder="10" showInDefault="0" showInWebsite="0" showInStore="0">
+                            <label>Payment Methods</label>
+                            <config_path>payment/eservice_payment/payment_methods</config_path>
+                        </field>
+                        <field id="order_status" translate="label" type="select" sortOrder="20" showInDefault="0" showInWebsite="0" showInStore="0">
+                            <label>New order status</label>
+                            <tooltip>Status given to newly created orders before payment result is returned.</tooltip>
+                            <source_model>Magento\Sales\Model\Config\Source\Order\Status\NewStatus</source_model>
+                            <config_path>payment/eservice_payment/order_status</config_path>
+                        </field>
+                        <field id="payment_cancelled" translate="label" type="select" sortOrder="30" showInDefault="0" showInWebsite="0" showInStore="0">
+                            <label>Cancelled order status</label>
+                            <tooltip>Status given to orders when payment fails. Add some text about refunds.</tooltip>
+                            <source_model>EService\Payment\Model\Config\Source\Cancelled</source_model>
+                            <config_path>payment/eservice_payment/payment_cancelled</config_path>
+                        </field>
+                        <field id="display_mode" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Display Mode</label>
+                            <source_model>EService\Payment\Model\Config\Source\DisplayMode</source_model>
+                            <config_path>payment/eservice_payment/display_mode</config_path>
+                        </field>
+                        <field id="debug_log" translate="label" type="select" sortOrder="50" showInDefault="0" showInWebsite="0" showInStore="0">
+                            <label>Enable debug logging</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/eservice_payment/debug_log</config_path>
+                        </field>
+                        <field id="environment" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Environment</label>
+                            <source_model>EService\Payment\Model\Config\Source\Environment</source_model>
+                            <config_path>payment/eservice_payment/environment</config_path>
+                        </field>
+                        <group id="eservice_payment_advanced_prod" translate="label" sortOrder="70" showInDefault="0" showInWebsite="1" showInStore="0" >
+                            <comment>
+                                <![CDATA[Production URLs]]>
+                            </comment>
+                            <label>Production URLs</label>
+                            <attribute type="expanded">0</attribute>
+                            <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                            <field id="token_url_production" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>Token Production URL</label>
+                                <config_path>payment/eservice_payment/token_url_production</config_path>
+                            </field>
+                            <field id="cashier_url_production" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>Cashier Production URL</label>
+                                <config_path>payment/eservice_payment/cashier_url_production</config_path>
+                            </field>
+                            <field id="payments_url_production" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>Payments Production URL</label>
+                                <config_path>payment/eservice_payment/payments_url_production</config_path>
+                            </field>
+                            <field id="js_url_production" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>JS Production URL</label>
+                                <config_path>payment/eservice_payment/js_url_production</config_path>
+                            </field>
+                        </group>
+                        <group id="eservice_payment_advanced_sandbox" translate="label" sortOrder="80" showInDefault="0" showInWebsite="1" showInStore="0" >
+                            <comment>
+                                <![CDATA[Sandbox URLs]]>
+                            </comment>
+                            <label>Sandbox URLs</label>
+                            <attribute type="expanded">0</attribute>
+                            <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                            <field id="token_url_sandbox" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>Token Sandbox URL</label>
+                                <config_path>payment/eservice_payment/token_url_sandbox</config_path>
+                            </field>
+                            <field id="cashier_url_sandbox" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>Cashier Sandbox URL</label>
+                                <config_path>payment/eservice_payment/cashier_url_sandbox</config_path>
+                            </field>
+                            <field id="payments_url_sandbox" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>Payments Sandbox URL</label>
+                                <config_path>payment/eservice_payment/payments_url_sandbox</config_path>
+                            </field>
+                            <field id="js_url_sandbox" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                                <label>JS Sandbox URL</label>
+                                <config_path>payment/eservice_payment/js_url_sandbox</config_path>
+                            </field>
+                        </group>
+                    </group>
+            </group>
+        </section>
+    </system>
+</config>

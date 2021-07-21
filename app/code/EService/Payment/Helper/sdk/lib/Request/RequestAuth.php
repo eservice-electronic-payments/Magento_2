@@ -1,0 +1,17 @@
+<?php
+
+namespace EService\Payment\Helper\sdk\lib\Request;
+
+use EService\Payment\Helper\sdk\lib\Request;
+use EService\Payment\Helper\sdk\lib\Request\Action\RequestActionAuth;
+use EService\Payment\Helper\sdk\lib\Request\Token\RequestTokenAuth;
+
+class RequestAuth extends Request {
+
+    public function __construct($values = array()) {
+        parent::__construct();
+        $this->_token_request = new RequestTokenAuth($values);
+        $this->_action_request = new RequestActionAuth($values);
+    }
+
+}

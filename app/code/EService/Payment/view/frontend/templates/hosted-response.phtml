@@ -1,0 +1,7 @@
+<?php $params = $block->getParams(); ?>
+
+<script>
+    <?php if (isset($params['redirectUrl'])) :?>
+        window.top.location = "<?php echo $block->escapeXssInUrl($params['redirectUrl']); ?>";
+    <?php endif; ?>
+</script>
