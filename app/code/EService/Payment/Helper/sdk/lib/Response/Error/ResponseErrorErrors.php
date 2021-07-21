@@ -6,6 +6,7 @@ use EService\Payment\Helper\sdk\lib\Response;
 
 class ResponseErrorErrors extends Response {
 
+<<<<<<< HEAD
     public function __construct($errors = array())
         {
             if (is_array($errors)) {
@@ -20,5 +21,16 @@ class ResponseErrorErrors extends Response {
                 $this->_data['errors'] = $errors;
             }
         }
+=======
+    public function __construct($errors = array()) {
+        if (is_array($errors)) {
+            foreach ($errors as $error) {
+                $this->_data[$error] = $error;
+            }
+        } else {
+            $this->_data[$errors] = $errors;
+        }
+    }
+>>>>>>> a231c1298ca9f4fd172d010608ebef9bee5b1ab1
 
 }
