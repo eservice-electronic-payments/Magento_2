@@ -420,7 +420,7 @@ class PaymentMethod extends \Magento\Payment\Model\Method\AbstractMethod impleme
         $customerAddressCity = $billingAddressCity;
         $customerAddressStreet = $billingAddressStreet;
         $customerAddressPostalCode = $billingAddress->getPostcode();
-        $customerAddressState = $billingAddress->getRegionCode();
+//         $customerAddressState = $billingAddress->getRegionCode();
 
         $sessionTokenData = array(
             "action" => $apiOperation,
@@ -444,7 +444,6 @@ class PaymentMethod extends \Magento\Payment\Model\Method\AbstractMethod impleme
             "customerAddressStreet" => $customerAddressStreet,
             "customerAddressCity" => $customerAddressCity,
             "customerAddressPostalCode" => $customerAddressPostalCode,
-            "customerAddressState" => $customerAddressState,
             "customerAddressCountry" => $customerAddressCountry,
             "merchantChallengeInd" => '01',
             "merchantDecReqInd" => 'N',
