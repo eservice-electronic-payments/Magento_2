@@ -1,30 +1,27 @@
-<html>
-<head>
-</head>
-<body>
 <form id="paymentForm" action="<?php echo $block->getMerchantLandingPageUrl(); ?>" method="post">
 <input type="hidden" id="merchantTxId" name="merchantTxId" value=""/>
 </form>
-<div id="ipgCashierDiv"></div>
-<script type="text/javascript" src="<?php echo $block->getJsUrl(); ?>"></script>
+<div id="ipgCashierDiv" style="height:550px;"></div>
 <script type="text/javascript">
-    var cashier = com.myriadpayments.api.cashier();
-    cashier.init({ baseUrl: "<?php echo $block->escapeHtml($block->getFormUrl()) ?>" });
-    function handleResult(result,data) { 
-        if(result == "success"){
+    require(['jquery','EService_Payment/js/rsvp.min'],function($,RSVP){
+        $(document).ready(function(){
+            window.RSVP = RSVP;
+            require(["<?php echo $block->getJsUrl(); ?>"],function(){
+                var cashier = com.myriadpayments.api.cashier();
+                cashier.init({ baseUrl: "<?php echo $block->escapeHtml($block->getFormUrl()) ?>" });
+                function handleResult(result,data) {
+                    if(result == "success"){
 
-            document.getElementById("merchantTxId").value = data.merchantTxId;;
-            document.getElementById("paymentForm").submit();
-        }
-    }
-     function pay() {
-         cashier.show({ containerId: "ipgCashierDiv",<?php
-            foreach ($block->getFormFields() as $field => $value) {
-                echo $field.':"'.$value.'",';
-         }
-         ?> successCallback: handleResult, failureCallback: handleResult, cancelCallback: handleResult,integrationMode:"iframe" });
-    };
-    pay();
+                        document.getElementById("merchantTxId").value = data.merchantTxId;;
+                        document.getElementById("paymentForm").submit();
+                    }
+                }
+                cashier.show({ containerId: "ipgCashierDiv",<?php
+                    foreach ($block->getFormFields() as $field => $value) {
+                        echo $field.':"'.$value.'",';
+                    }
+                    ?> successCallback: handleResult, failureCallback: handleResult, cancelCallback: handleResult,integrationMode:"iframe" });
+            });
+        });
+    });
  </script>
-</body>
-</html>

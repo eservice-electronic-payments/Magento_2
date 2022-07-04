@@ -466,14 +466,9 @@ class Helper extends AbstractHelper
                     __('You can\'t create an invoice without products.')
                 );
             }
-            $invoice->setRequestedCaptureCase(\Magento\Sales\Model\Order\Invoice::CAPTURE_ONLINE);
             $invoice->register();
-            $invoice->save();
-            $invoice->getOrder()->setCustomerNoteNotify(false);
-            $invoice->getOrder()->setIsInProcess(true);
-            $order->addStatusHistoryComment(__('Automatically INVOICED'), true);
-            $transactionSave = $transaction->addObject($invoice)->addObject($invoice->getOrder());
-            $transactionSave->save();
+            $order->addRelatedObject($invoice)->save();
+            $invoice->pay()->save();
         } catch (\Exception $e) {
             throw new \Magento\Framework\Validator\Exception(__(json_encode($e->getMessage())));
         }

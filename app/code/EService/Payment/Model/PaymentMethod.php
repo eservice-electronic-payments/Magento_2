@@ -742,15 +742,6 @@ class PaymentMethod extends \Magento\Payment\Model\Method\AbstractMethod impleme
                 $order->save();
             }
             return $this;
-        } else if($result->result === 'redirection') {
-            // redirect to the redirection URL
-            $merchantId = $result->merchantId;
-            $merchantTxId = $result->merchantTxId;
-            $txId = $result->txId;
-            $redirectionUrl = $result->redirectionUrl;
-            Mage::app()->getFrontController()
-                ->getResponse()
-                ->setRedirect($redirectionUrl);
         } else if (strpos($result->errors, 'current status: SUCCESS') !== false) {
             $order = $payment->getOrder();
             $payment->setTransactionId($order->getRealOrderId());
