@@ -317,11 +317,6 @@ class PaymentMethod extends \Magento\Payment\Model\Method\AbstractMethod impleme
         $formFields = [];
         $formFields['token'] = $token->token;
         $formFields['merchantId'] = $merchantId;
-
-        $paymentMethodID = trim($this->_helper->getConfigData('payment_method'));
-        if ($paymentMethodID != '') {
-            $formFields['paymentSolutionId'] = $paymentMethodID;
-        }
         $formFields['integrationMode'] = $this->_helper->getIntegrationMode();
 
         return $formFields;
@@ -682,11 +677,6 @@ class PaymentMethod extends \Magento\Payment\Model\Method\AbstractMethod impleme
     {
         $merchantId = trim($this->_helper->getConfigData('merchant_id'));
         $data['merchantId'] = $merchantId;
-        $paymentMethodID = trim($this->_helper->getConfigData('payment_method'));
-        if ($paymentMethodID != '') {
-            $data['paymentSolutionId'] = $paymentMethodID;
-        }
-
         return $data;
     }
 

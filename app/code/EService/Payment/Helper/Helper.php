@@ -425,6 +425,7 @@ class Helper extends AbstractHelper
         customerFirstName($post_data['customerFirstName'])->
         customerLastName($post_data['customerLastName'])->
         customerEmail($post_data['customerEmail'])->
+        customerPhone($post_data['customerPhone'])->
         customerId($post_data['customerId'])->
         userDevice($post_data['userDevice'])->
         userAgent($post_data['userAgent'])->
@@ -439,9 +440,6 @@ class Helper extends AbstractHelper
         if($post_data['customerAddressPostalCode']){
             //customerAddressPostalCode is not a mandatory field for Magento2, will not send this parameter if the customer did not fill it
             $payments->customerAddressPostalCode($post_data['customerAddressPostalCode']);
-        }
-        if($post_data['customerPhone']){
-            $payments->customerPhone($post_data['customerPhone']);
         }
         $response = $payments->token();
         return $response;
