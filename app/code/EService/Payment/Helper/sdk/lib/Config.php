@@ -15,14 +15,14 @@ class Config
     "PaymentOperationActionUrl" => "https://apiuat.test.intelligent-payments.com/payments",
     "JavaScriptUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/js/api.js",
     "BaseUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/ui/cashier",
-    "MobileUrl" => "https://cashierui-apiqa.test.myriadpayments.com/react-frontend/index.html",
+    "MobileUrl" => "https://cashierui-apiqa.test.intelligent-payments.com/react-frontend/index.html",
   );
   static $ProductionUrls = array(
     "SessionTokenRequestUrl" => "https://api.intelligent-payments.com/token",
     "PaymentOperationActionUrl" => "https://api.intelligent-payments.com/payments",
     "JavaScriptUrl" => "https://cashierui-api.intelligent-payments.com/js/api.js",
     "BaseUrl" => "https://cashierui-api.intelligent-payments.com/ui/cashier",
-    "MobileUrl" => "https://cashierui-apiqa.test.myriadpayments.com/react-frontend/index.html",
+    "MobileUrl" => "https://cashierui-apiqa.test.intelligent-payments.com/react-frontend/index.html",
   );
   static $Protocol = "https";
   static $Method = "POST";

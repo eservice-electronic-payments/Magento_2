@@ -152,6 +152,13 @@ class Callback extends \Magento\Framework\App\Action\Action
                 $transaction->save();
                 $payment->save();
                 // TODO: add auto-capture??
+            }else{
+                if($realStatus != 'STARTED' && $realStatus != 'WAITING_RESPONSE' && $realStatus != 'INCOMPLETE'){
+                    //ignore those above notification status
+                    $order->cancel();
+                    $order->addStatusHistoryComment(__('Order cancelled due to failed transaction'));
+                    $order->save();
+                }
             }
         }
     }

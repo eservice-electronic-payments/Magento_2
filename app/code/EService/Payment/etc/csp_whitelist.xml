@@ -59,7 +59,7 @@
               <value id="evopayment-base" type="host">*.evopaymentgateway.com</value>
               <value id="universal-base" type="host">*.universalpay.es</value>
               <value id="moneta-base" type="host">*.moneta.cz</value>
-              <value id="myriad-base" type="host">*.myriadpayments.com</value>
+              <value id="myriad-base" type="host">*.intelligent-payments.com</value>
             </values>
         </policy>
     </policies>
